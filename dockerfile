@@ -6,9 +6,8 @@ RUN     apt-get upgrade -y \
         && apt-get install apache2 -y 
 RUN     mkdir my-code
 COPY    ./my-site.conf /etc/apache2/sites-available/.
+COPY    ./apache2.conf /etc/apache2/.
 WORKDIR /etc/apache2/sites-available
 RUN     a2dissite *
 RUN     a2ensite my-site.conf
-COPY    ./apache2.conf /etc/apache2/.
-WORKDIR my-code
 CMD     apachectl -D FOREGROUND
