@@ -5,6 +5,7 @@ RUN     apt-get upgrade -y \
         && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
         && apt-get install apache2 -y 
 RUN     mkdir my-code
+WORKDIR /my-code
 COPY    ./my-site .
 COPY    ./my-site.conf /etc/apache2/sites-available/.
 COPY    ./apache2.conf /etc/apache2/.
