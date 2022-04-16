@@ -4,6 +4,7 @@ ENV     TZ=Asia/Ho_Chi_Minh
 RUN     apt-get upgrade -y \
         && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
         && apt-get install apache2 -y 
+COPY    ./my-site.conf /etc/apache2/sites-available/.
 WORKDIR /etc/apache2/sites-available
 RUN     a2dissite *
 RUN     a2ensite my-site.conf
@@ -12,5 +13,4 @@ COPY    ./apache2.conf .
 RUN     mkdir my-code
 WORKDIR my-code
 COPY    /my-site .
-COPY    ./my-site.conf /etc/apache2/sites-available/.
 CMD     apachectl -D FOREGROUND
