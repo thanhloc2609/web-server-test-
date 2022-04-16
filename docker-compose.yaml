@@ -1,0 +1,8 @@
+version: '3'
+services:
+  apache-web-server:
+    build:
+      dockerfile: dockerfile
+      context: .
+    ports:
+      - 9000:80
