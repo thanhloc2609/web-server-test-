@@ -8,10 +8,10 @@ RUN     mkdir my-code
 WORKDIR my-code
 COPY    /my-site .
 COPY    ./my-site.conf /etc/apache2/sites-available/.
-WORKDIR /etc/apache2/sites-available
+RUN     cd  /etc/apache2/sites-available
 RUN     a2dissite *
 RUN     a2ensite my-site.conf
-WORKDIR /etc/apache2
+RUN     cd /etc/apache2
 COPY    ./apache2.conf .
-WORKDIR my-code
+RUN     cd ~ && cd /my-code
 CMD     apachectl -D FOREGROUND
