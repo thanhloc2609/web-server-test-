@@ -1,0 +1,9 @@
+version: '3'
+services:
+  apache-web-server:
+    image: thanhloc2609/apache-pipe:latest
+    container_name: apache-pipe
+    volumes:
+      - ./my-site:/my-code
+    ports:
+      - 9000:80
